@@ -108,6 +108,21 @@ const appendPageLinks = (list) => {
 
    };
 
+   const studentSearch = () => {
+      const headerDiv = document.querySelector('.page-header');
+      let searchDiv = createElement('div');
+      searchDiv.className = 'student-search';
+      const searchField = createElement('input');
+      searchField.setAttribute('placeholder','Search for students...');
+      const searchButton = createElement('button'); 
+      searchButton.textContent = 'Search';
+      headerDiv.appendChild(searchDiv);
+      searchDiv.appendChild(searchField);
+      searchDiv.appendChild(searchButton);
+
+   };
+
+studentSearch();
 showPage(listOfStudents, 1);
 appendPageLinks(listOfStudents);
 
