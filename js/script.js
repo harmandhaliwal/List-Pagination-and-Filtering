@@ -41,7 +41,7 @@ const appendPageLinks = (list) => {
    pageDiv.className = 'pagination';
    document.querySelector(".page").appendChild(pageDiv);
    pageDiv.appendChild(pageUl);
-   //if user input value does not include any student names then "No Results" text will be displayed in HTML*
+   //if user input value does not include any student names then "No Results" text will be displayed in HTML
    if (list.length === 0) {
       const span = document.createElement('span');
       span.textContent = 'No Results';
@@ -61,7 +61,7 @@ const appendPageLinks = (list) => {
       }
    };
 
-   const a = document.querySelectorAll('.pagination ul li a');
+   const a = document.querySelectorAll('.pagination ul li a'); //stores all 'a' elements that are descendants of the .pagination class into a NodeList 
    for (let i = 0; i < a.length; i++) { //event listener added to each 'a' element 
       a[i].addEventListener('click', (e) => {
          for (let j = 0; j < a.length; j++) { //removes 'active' class from all page links when 'a' element is clicked
@@ -74,7 +74,7 @@ const appendPageLinks = (list) => {
 };
 
 /*
-   The function below creates and appends a search bar.
+   The function below creates and appends a search bar and button.
    When the search button is clicked, the list is filtered by student name for those that include the search value.
    A keyup event listener is also added to the search input so that the list filters in real time as the user types. 
 */
@@ -105,14 +105,14 @@ const studentSearch = () => {
    });
 };
 
-//returns array of the search results in
+//returns array of the search results
 const userSearch = (input, list) => {
    let resultArray = [];
    if (!input) {
       return list; //if input field is empty then paginated list of students is returned
    } else {
       for (let i = 0; i < list.length; i++) {
-         list[i].style.display = 'none';
+         list[i].style.display = 'none'; //stops build up of displayed list items that were previously on that page from the showPage function
          let studentName = list[i].querySelector('h3').textContent.toLowerCase(); //stores student names in lower case by calling h3 element
          //if student name includes a value from the user's input then it is pushed into the array
          if (studentName.includes(input.toLowerCase())) {
@@ -123,6 +123,7 @@ const userSearch = (input, list) => {
    };
 };
 
+//calling the functions
 studentSearch();
 showPage(listOfStudents, 1);
 appendPageLinks(listOfStudents);
