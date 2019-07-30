@@ -69,7 +69,13 @@ const appendPageLinks = (list) => {
   pageDiv.className = 'pagination';
   document.querySelector(".page").appendChild(pageDiv);
   pageDiv.appendChild(pageUl);
-  
+
+  if (list.length === 0) { 
+   const span = document.createElement('span');
+   span.textContent = 'No Results';
+   pageDiv.appendChild(span);
+}
+
   const pages = Math.ceil(list.length/itemsPerPage);
   for (let i = 1; i <= pages; i++) {
      const pageLi = createElement('li');
