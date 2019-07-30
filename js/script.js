@@ -115,6 +115,11 @@ const appendPageLinks = (list) => {
       showPage(searchResults, 1);
       appendPageLinks(searchResults);
    });
+   searchField.addEventListener('keyup', (e) => {
+      const searchResults =  userSearch(e.target.value, listOfStudents);
+      showPage(searchResults, 1);
+      appendPageLinks(searchResults);
+   });
 };
 
 
